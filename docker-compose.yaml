@@ -1,11 +1,10 @@
 services:
-  app:
+  fazbear:
     build:
       context: .
       dockerfile: .docker/prod/Dockerfile
     container_name: fazbear
     volumes:
-      - .:/app
       - pnpm_store:/pnpm-store
       - /app/node_modules
     depends_on:

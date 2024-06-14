@@ -11,7 +11,7 @@ RUN pnpm config --global set store-dir /pnpm-store
 COPY package.json pnpm-lock.yaml /app/
 
 WORKDIR /app
-RUN pnpm install
+RUN pnpm install --frozen-lockfile
 
 FROM install AS build
 COPY . /app
