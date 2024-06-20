@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon -L src/index.js",
-    "dev:docker": "podman compose -f docker-compose.dev.yaml up",
+    "dev:docker": "podman compose -f docker-compose.yaml up",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

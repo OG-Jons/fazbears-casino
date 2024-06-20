@@ -1,22 +1,22 @@
 services:
-  fazbear:
+  app:
     build:
       context: .
-      dockerfile: .docker/prod/Dockerfile
+      dockerfile: .docker/dev/Dockerfile
     container_name: fazbear
     working_dir: /app
     volumes:
       - .:/app
       - pnpm_store:/pnpm-store
       - /app/node_modules
-    command: ["pnpm", "start"]
+    command: ["pnpm", "dev"]
     depends_on:
       - mongo
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
       - MONGODB_URI=mongodb://mongo:27017/devdb
     networks:
-      - prod_network
+      - dev_network
 
   mongo:
     image: mongo:7.0.11
@@ -26,11 +26,11 @@ services:
     ports:
       - "27017:27017"
     networks:
-      - prod_network
+      - dev_network
 
 volumes:
   mongo_data:
   pnpm_store:
 
 networks:
-  prod_network:
+  dev_network:
