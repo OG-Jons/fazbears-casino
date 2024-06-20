@@ -8,12 +8,10 @@ VOLUME [ "/pnpm-store", "/app/node_modules" ]
 RUN pnpm config --global set store-dir /pnpm-store
 
 # You may need to copy more files than just package.json in your code
-COPY package.json pnpm-lock.yaml /app/
+COPY package.json /app/package.json
+COPY pnpm-lock.yaml /app/pnpm-lock.yaml
 
 WORKDIR /app
 RUN pnpm install --frozen-lockfile
-
-FROM install AS build
 COPY . /app
 ENV NODE_ENV=production
-ENTRYPOINT ["pnpm", "start"]
