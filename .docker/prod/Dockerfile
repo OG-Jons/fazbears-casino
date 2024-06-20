@@ -15,3 +15,4 @@ WORKDIR /app
 RUN pnpm install --frozen-lockfile
 COPY . /app
 ENV NODE_ENV=production
+ENTRYPOINT ["pnpm", "start"]
