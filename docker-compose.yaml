@@ -19,7 +19,7 @@ services:
       - prod_network
 
   mongo:
-    image: mongo:4.4s
+    image: mongo:7.0.11
     container_name: mongodb
     volumes:
       - mongo_data:/data/db
