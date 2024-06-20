@@ -13,4 +13,5 @@ COPY pnpm-lock.yaml /app/pnpm-lock.yaml
 
 WORKDIR /app
 RUN pnpm install
-ENV NODE_ENV=production
+COPY . /app
+ENV NODE_ENV=development
