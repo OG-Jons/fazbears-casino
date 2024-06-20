@@ -1,5 +1,5 @@
 services:
-  app:
+  fazbear:
     build:
       context: .
       dockerfile: .docker/dev/Dockerfile
@@ -7,9 +7,7 @@ services:
     working_dir: /app
     volumes:
       - .:/app
-      - pnpm_store:/pnpm-store
-      - /app/node_modules
-    command: ["pnpm", "dev"]
+    command: ["npm", "run", "dev"]
     depends_on:
       - mongo
     environment:
