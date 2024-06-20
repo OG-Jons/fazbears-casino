@@ -4,19 +4,22 @@ services:
       context: .
       dockerfile: .docker/prod/Dockerfile
     container_name: fazbear
+    working_dir: /app
     volumes:
+      - .:/app
       - pnpm_store:/pnpm-store
       - /app/node_modules
+    command: ["pnpm", "start"]
     depends_on:
       - mongo
     environment:
       - NODE_ENV=production
-      - MONGO_URL=mongodb://mongo:27017/proddb
+      - MONGODB_URI=mongodb://mongo:27017/devdb
     networks:
       - prod_network
 
   mongo:
-    image: mongo:4.4
+    image: mongo:4.4s
     container_name: mongodb
     volumes:
       - mongo_data:/data/db
